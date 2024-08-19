@@ -30,6 +30,8 @@ const CreationForm = () => {
   const [font, setFont] = useState('Arial');
   const { data: session, status } = useSession();
   const router = useRouter();
+  const [date, setDate] = useState('');
+const [location, setLocation] = useState('');
 
   useEffect(() => {
     if (status === "unauthenticated") {
@@ -62,6 +64,8 @@ const CreationForm = () => {
         imageUrl,
         link,
         font,
+        date,
+        location,
         createdAt: new Date().toISOString(),
         userEmail: userEmail,
         userId: userId,
@@ -116,6 +120,28 @@ const CreationForm = () => {
             />
           </div>
           <div>
+            <label htmlFor="date" className="block text-sm font-medium text-white">Date</label>
+            <input
+              type="date"
+              id="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              required
+              className="mt-1 block w-full px-3 py-2 text-white bg-white bg-opacity-40 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500"
+            />
+          </div>
+          <div>
+            <label htmlFor="location" className="block text-sm font-medium text-white">Location</label>
+            <input
+              type="text"
+              id="location"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              required
+              className="mt-1 block w-full px-3 py-2 text-white bg-white bg-opacity-40 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500"
+            />
+          </div>
+          <div>
             <label htmlFor="content" className="block text-sm font-medium text-white">Content</label>
             <textarea
               id="content"
@@ -139,7 +165,7 @@ const CreationForm = () => {
           
           <div>
             <button type="submit" className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-yellow-500 text-white hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2">
-              Publish Your Project
+              Publish Your Event
             </button>
           </div>
         </form>

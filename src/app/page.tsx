@@ -31,13 +31,12 @@ const HomePage = () => {
           <br></br>
           <br></br>
           <br></br>
-            <h1 className="text-4xl font-extrabold text-zinc-900 sm:text-4xl lg:text-5xl">
-              Unite for a Greener 
-              <span className='text-green-500'> Future</span>
-              <br></br>
-              
-              
-            </h1>
+          <h1 className="text-4xl font-extrabold text-green-500 sm:text-zinc-900 sm:text-4xl lg:text-5xl">
+  Unite for a Greener 
+  <span className='sm:text-green-500'> Future</span>
+  <br />
+</h1>
+
             <p className="mt-3 max-w-xl font-bold mx-auto text-xl text-white">
               Connect, collaborate, and make an impact with like-minded organizations dedicated to environmental protection.
             </p>

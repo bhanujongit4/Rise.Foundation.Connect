@@ -52,7 +52,6 @@ const Account = () => {
             alt=""
             width={48}
             height={48}
-            layout="intrinsic"
           />
         </button>
       </div>

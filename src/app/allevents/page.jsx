@@ -4,9 +4,29 @@ import React, { useState, useEffect } from 'react';
 import { collection, getDocs, doc, getDoc, query, where } from 'firebase/firestore';
 import { db } from '../firebaseConfig';
 import Link from 'next/link';
+import { MapPinIcon, CalendarIcon } from '@heroicons/react/24/solid';
 
 const AllEvents = () => {
   const [events, setEvents] = useState([]);
+
+  const formatDate = (dateField) => {
+    if (!dateField) return 'Unknown date';
+    
+    let date;
+    if (dateField instanceof Date) {
+      date = dateField;
+    } else if (dateField.toDate && typeof dateField.toDate === 'function') {
+      date = dateField.toDate();
+    } else if (dateField.seconds) {
+      date = new Date(dateField.seconds * 1000);
+    } else if (typeof dateField === 'string') {
+      date = new Date(dateField);
+    } else {
+      return 'Invalid date';
+    }
+    
+    return date.toLocaleDateString();
+  };
 
   const fetchUserName = async (userId) => {
     try {
@@ -75,7 +95,15 @@ const AllEvents = () => {
               )}
               <div className="p-4">
                 <h2 className="text-xl font-bold text-white mb-2">{event.title}</h2>
-                <p className="text-white mb-4">{event.content}...</p>
+                <p className="text-white mb-4">{event.content.substring(0, 100)}...</p>
+                <p className="text-sm text-yellow-500 mb-2 flex items-center">
+                  <CalendarIcon className="w-4 h-4 mr-2" />
+                  Date: {formatDate(event.date)}
+                </p>
+                <p className="text-sm text-yellow-500 mb-2 flex items-center">
+                  <MapPinIcon className="w-4 h-4 mr-2" />
+                  Location: {event.location}
+                </p>
                 <div className="text-sm text-green-500 mb-2">
                   By: <Link href={`/author/${event.userId}`} className="hover:underline">{event.userName}</Link>
                 </div>

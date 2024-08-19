@@ -20,12 +20,9 @@ export default function Header() {
     { href: '/authentication/signup', label: 'Signup' },
     { href: '/allevents', label: 'Events' },
   ];
-  
-  // Remove the 'Login' and 'Signup' links if authenticated
+
   if (status === 'authenticated') {
     navLinks = navLinks.filter(link => link.href !== '/authentication/login' && link.href !== '/authentication/signup');
-    
-    // Add the 'Create Blog' link for authenticated users
     navLinks.push({ href: '/listing', label: 'Create Blog' });
     navLinks.push({ href: '/eventcreation', label: 'Create Event' });
   }
@@ -33,8 +30,8 @@ export default function Header() {
   return (
     <header className="bg-zinc-900 dark:bg-black shadow-md">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <h1 className="text-2xl text-white">
-          <Link href="/">Home</Link>
+        <h1 >
+          <Link href="/"><img src="images/logo.png" alt="logo" width={48}/></Link>
         </h1>
 
         {/* Desktop Navigation */}

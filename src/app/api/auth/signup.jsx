@@ -95,7 +95,7 @@ const Signup = () => {
     <div className="min-h-screen flex items-center justify-center bg-white text-black p-4">
       <div className="w-full max-w-2xl">
         <div className="text-center mb-8">
-          <img src="/images/logo" className="h-20 mx-auto mb-8" alt="Logo" />
+          <img src="/images/logo.png" className="h-20 mx-auto mb-8" alt="Logo" />
           <h1 className="text-4xl font-bold">Create Your Account</h1>
           <p className="text-gray-600 mt-2">Join us and start your journey</p>
         </div>
