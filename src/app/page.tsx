@@ -1,113 +1,110 @@
-import Image from "next/image";
+'use client'
 
-export default function Home() {
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+
+import { Slack, Calendar, BarChart2, Users, BookOpen, Volume2 } from 'react-feather';
+
+
+const HomePage = () => {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
+    <div className="bg-custom-gradient dark:bg-black min-h-screen relative">
+      <div className="absolute inset-0 w-full h-full">
         <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
+          src="/images/earth.png"
+          alt="Background"
+          layout="fill"
+          objectFit="cover"
+          objectPosition="center"
+          quality={100}
           priority
+          className="w-full h-full"
         />
       </div>
+      
+      <div className="relative">
+       
+        <main className="relative max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+            <h1 className="text-4xl font-extrabold text-zinc-900 sm:text-4xl lg:text-5xl">
+              Unite for a Greener 
+              <span className='text-green-500'> Future</span>
+              <br></br>
+              
+              
+            </h1>
+            <p className="mt-3 max-w-xl font-bold mx-auto text-xl text-white">
+              Connect, collaborate, and make an impact with like-minded organizations dedicated to environmental protection.
+            </p>
+            <div className="mt-5 flex flex-col space-y-3 sm:flex-row sm:justify-center sm:space-x-3 sm:space-y-0">
+              <Link href="/eventcreation" className="rounded-md shadow w-full sm:w-auto">
+                <span className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-black bg-green-500 hover:bg-yellow-400 dark:text-white dark:bg-yellow-550 dark:hover:bg-yellow-400">
+                  Host an Event
+                </span>
+              </Link>
+              <Link href="/authentication/signup" className="rounded-md shadow w-full sm:w-auto">
+                <span className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-green-500 bg-white hover:bg-gray-50 dark:text-yellow-400 dark:bg-black dark:hover:bg-black">
+                  Join Us Now
+                </span>
+              </Link>
+            </div>
+          </div>
+           {/* Features Section */}
+           <div className="mt-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+        { icon: <Slack className="w-8 h-8" />, title: 'Sustainable Practices', description: 'Learn and share eco-friendly methods with our global community' },
+        { icon: <Calendar className="w-8 h-8" />, title: 'Event Management', description: 'Organize and join impactful environmental events' },
+        { icon: <BarChart2 className="w-8 h-8" />, title: 'Impact Analytics', description: 'Measure and visualize your environmental initiatives' },
+        { icon: <Users className="w-8 h-8" />, title: 'Community Building', description: 'Connect with passionate eco-advocates worldwide' },
+        { icon: <BookOpen className="w-8 h-8" />, title: 'Resource Sharing', description: 'Access a wealth of environmental knowledge' },
+        { icon: <Volume2 className="w-8 h-8" />, title: 'Advocacy Tools', description: 'Amplify your voice for a greener future' },
+      ].map((feature, index) => (
+                <div key={index} className="bg-blue-200 dark:bg-zinc-950 bg-opacity-70 dark:bg-opacity-50 overflow-hidden shadow rounded-lg">
+                  <div className="p-4">
+                    <div className="flex items-center">
+                      <div className="flex-shrink-0 text-green-500 dark:text-green-400">
+                        {feature.icon}
+                      </div>
+                      <div className="ml-4 flex-1">
+                        <dt className="text-lg font-medium text-gray-900 dark:text-white truncate">
+                          {feature.title}
+                        </dt>
+                        <dd className="mt-1 text-sm text-gray-900 dark:text-gray-300">
+                          {feature.description}
+                        </dd>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+          {/* Testimonial Section */}
+          <div className="mt-10 bg-blue-100 dark:bg-zinc-950 bg-opacity-65 dark:bg-opacity-80 overflow-hidden shadow rounded-lg p-6">
+            <h2 className="text-2xl font-bold text-center text-gray-900 dark:text-white mb-4">What Our Members Say</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className=" text-gray-700 dark:text-gray-300">
+                <p className="mb-2">"This platform has revolutionized how we connect with other organizations. The shared commitment to sustainability is inspiring!"</p>
+                <p className="font-bold">- Jordan Smith, Eco Warriors</p>
+              </div>
+              <div className=" text-gray-700 dark:text-gray-300">
+                <p className="mb-2">"The tools and community here have significantly amplified our efforts in promoting green practices."</p>
+                <p className="font-bold">- Taylor Green, Earth Advocates</p>
+              </div>
+            </div>
+          </div>
+         
+        </main>
       </div>
-    </main>
+    </div>
   );
-}
+};
+
+export default HomePage;
