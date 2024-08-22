@@ -30,8 +30,24 @@ const BlogPost = () => {
     return <div className="text-white">Loading...</div>;
   }
 
+  const renderContentWithImages = () => {
+    const contentParts = blog.content.split('[IMAGE]');
+    return contentParts.map((part, index) => (
+      <React.Fragment key={index}>
+        <p className="text-white whitespace-pre-wrap">{part}</p>
+        {index < blog.contentImageUrls.length && (
+          <img 
+            src={blog.contentImageUrls[index]} 
+            alt={`Content image ${index + 1}`} 
+            className="w-full rounded-md my-4"
+          />
+        )}
+      </React.Fragment>
+    ));
+  };
+
   return (
-    <div 
+    <div
       className="min-h-screen bg-cover bg-center bg-no-repeat relative"
       style={{ backgroundColor: `black` }}
     >
@@ -45,9 +61,7 @@ const BlogPost = () => {
               <img src={blog.imageUrl} alt={blog.title} className="w-full rounded-md" />
             </div>
           )}
-          <div>
-            <p className="text-white whitespace-pre-wrap">{blog.content}</p>
-          </div>
+          <div>{renderContentWithImages()}</div>
           <div className="text-sm text-yellow-500">
             <p>By: {blog.userName}</p>
             <p>Posted on: {new Date(blog.createdAt).toLocaleDateString()}</p>
