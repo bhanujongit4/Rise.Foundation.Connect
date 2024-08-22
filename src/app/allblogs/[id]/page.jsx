@@ -63,7 +63,6 @@ const BlogPost = () => {
           )}
           <div>{renderContentWithImages()}</div>
           <div className="text-sm text-yellow-500">
-            <p>By: {blog.userName}</p>
             <p>Posted on: {new Date(blog.createdAt).toLocaleDateString()}</p>
           </div>
         </div>
