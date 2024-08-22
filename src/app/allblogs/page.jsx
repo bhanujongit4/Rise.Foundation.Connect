@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { collection, getDocs, doc, getDoc, query, where } from 'firebase/firestore';
+import { collection, getDocs, doc, getDoc, query, where, orderBy } from 'firebase/firestore';
 import { db } from '../firebaseConfig';
 import Link from 'next/link';
 
@@ -35,7 +35,8 @@ const AllBlogs = () => {
     const fetchBlogs = async () => {
       try {
         const blogCollection = collection(db, 'blogs');
-        const blogSnapshot = await getDocs(blogCollection);
+        const q = query(blogCollection, orderBy('createdAt', 'desc')); // Order by createdAt in descending order
+        const blogSnapshot = await getDocs(q);
         const blogList = blogSnapshot.docs.map(doc => ({
           id: doc.id,
           ...doc.data()
@@ -59,7 +60,7 @@ const AllBlogs = () => {
   }, []);
 
   return (
-    <div 
+    <div
       className="min-h-screen bg-cover bg-center bg-no-repeat relative"
       style={{ backgroundColor: `black` }}
     >
